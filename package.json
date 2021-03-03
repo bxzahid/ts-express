@@ -3,9 +3,8 @@
 	"version": "1.0.0",
 	"main": "server.ts",
 	"scripts": {
-		"build": "tsc",
-		"dev": "ts-node-dev server.ts",
-		"start": "build dist/server.js"
+		"start": "npm install && tsc && node dist/server.js",
+		"dev": "ts-node-dev server.ts"
 	},
 	"license": "ISC",
 	"dependencies": {
