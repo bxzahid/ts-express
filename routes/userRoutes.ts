@@ -1,7 +1,6 @@
 import { Router } from "express";
 import {
 	login,
-	logout,
 	protect,
 	signup,
 } from "./../controllers/authController";
@@ -19,7 +18,6 @@ router.get("/", (_, res) => {
 });
 router.post("/signup", signup);
 router.post("/login", login);
-router.get("/logout", logout);
 
 // Protect all routes after this middleware
 router.use(protect);

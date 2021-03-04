@@ -1,11 +1,19 @@
 import { NextFunction, Request, Response } from "express";
 import AppError from "./../utils/appError";
 
+/**
+ * @name handleCastErrorDB
+ * @param {any} err
+ */
 const handleCastErrorDB = (err: any) => {
 	const message = `Invalid ${err.path}: ${err.value}.`;
 	return new AppError(message, 400);
 };
 
+/**
+ * @name handleDuplicateFieldsDB
+ * @param {any} err
+ */
 const handleDuplicateFieldsDB = (err: any) => {
 	const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
 
@@ -13,6 +21,10 @@ const handleDuplicateFieldsDB = (err: any) => {
 	return new AppError(message, 400);
 };
 
+/**
+ * @name handleValidationErrorDB
+ * @param {any} err
+ */
 const handleValidationErrorDB = (err: any) => {
 	const errors = Object.values(err.errors).map((el: any) => el.message);
 
@@ -20,12 +32,24 @@ const handleValidationErrorDB = (err: any) => {
 	return new AppError(message, 400);
 };
 
+/**
+ * @name handleJWTError
+ */
 const handleJWTError = () =>
 	new AppError("Invalid token. Please log in again!", 401);
 
+/**
+ * @name handleJWTExpiredError
+ */
 const handleJWTExpiredError = () =>
 	new AppError("Your token has expired! Please log in again.", 401);
 
+/**
+ * @name sendErrorDev
+ * @param {any} err
+ * @param {Request} req
+ * @param {Response} res
+ */
 const sendErrorDev = (err: any, req: Request, res: Response) => {
 	// A) API
 	if (req.originalUrl.startsWith("/api")) {
@@ -45,6 +69,12 @@ const sendErrorDev = (err: any, req: Request, res: Response) => {
 	});
 };
 
+/**
+ * @name sendErrorProd
+ * @param {any} err
+ * @param {Request} req
+ * @param {Response} res
+ */
 const sendErrorProd = (err: any, req: Request, res: Response) => {
 	// A) API
 	if (req.originalUrl.startsWith("/api")) {

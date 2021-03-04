@@ -3,6 +3,7 @@ import User from "./../models/userModel"
 
 /**
  * @export
+ * @name getAllUsers
  * @param {Request} req
  * @param {Response} res
  */

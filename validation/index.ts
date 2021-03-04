@@ -2,6 +2,7 @@ const Joi = require("joi");
 
 /**
  * @export
+ * @name signupSchema
  */
 export const signupSchema = Joi.object({
 	name: Joi.string().min(4).max(15).required(),
@@ -18,6 +19,7 @@ export const signupSchema = Joi.object({
 
 /**
  * @export
+ * @name loginSchema
  */
 export const loginSchema = Joi.object({
 	email: Joi.string()

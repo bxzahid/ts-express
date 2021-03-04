@@ -7,6 +7,10 @@ import { loginSchema, signupSchema } from "../validation";
 import User from "./../models/userModel";
 import AppError from "./../utils/appError";
 
+/**
+ * @name signToken
+ * @return {String} id
+ */
 const signToken = (id: string) => {
 	return jwt.sign({ id }, process.env.JWT_SECRET, {
 		expiresIn: process.env.JWT_EXPIRES_IN,
@@ -15,6 +19,7 @@ const signToken = (id: string) => {
 
 /**
  * @export
+ * @name signup
  * @param {Request} req
  * @param {Response} res
  */
@@ -43,6 +48,7 @@ export const signup = catchAsync(async (req: Request, res: Response) => {
 
 /**
  * @export
+ * @name login
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
@@ -83,19 +89,7 @@ export const login = catchAsync(
 
 /**
  * @export
- * @param {Request} req
- * @param {Response} res
- */
-export const logout = (req: Request, res: Response) => {
-	res.cookie("jwt", "loggedout", {
-		expires: new Date(Date.now() + 10 * 1000),
-		httpOnly: true,
-	});
-	res.status(200).json({ status: "success" });
-};
-
-/**
- * @export
+ * @name protect
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
