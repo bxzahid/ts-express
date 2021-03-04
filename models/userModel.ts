@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 import validator from "validator";
+
 import { IUser } from './../interfaces/index';
 
 const userSchema = new Schema({

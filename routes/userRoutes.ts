@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import {
 	login,
 	logout,
@@ -7,7 +7,10 @@ import {
 } from "./../controllers/authController";
 import { getAllUsers } from "./../controllers/userController";
 
-const router = express.Router();
+/**
+ * @constant {express.Router}
+ */
+const router: Router = Router();
 
 router.get("/", (_, res) => {
 	res.json({

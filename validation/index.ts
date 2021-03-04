@@ -1,5 +1,8 @@
 const Joi = require("joi");
 
+/**
+ * @export
+ */
 export const signupSchema = Joi.object({
 	name: Joi.string().min(4).max(15).required(),
 	email: Joi.string()
@@ -13,6 +16,9 @@ export const signupSchema = Joi.object({
 		.required(),
 }).options({ abortEarly: false });
 
+/**
+ * @export
+ */
 export const loginSchema = Joi.object({
 	email: Joi.string()
 		.email({

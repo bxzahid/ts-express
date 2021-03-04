@@ -3,12 +3,10 @@ import cors from "cors";
 import express, { Application, NextFunction, Request, Response } from "express";
 import mongoSanitize from "express-mongo-sanitize";
 import rateLimit from "express-rate-limit";
-import hpp from "hpp";
 import morgan from "morgan";
 import globalErrorHandler from "./controllers/errorController";
 import userRouter from "./routes/userRoutes";
 import AppError from "./utils/appError";
-
 
 // Start express app
 const app: Application = express();

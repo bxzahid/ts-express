@@ -83,9 +83,14 @@ const sendErrorProd = (err: any, req: Request, res: Response) => {
 	});
 };
 
+/**
+ * @export
+ * @param {any} err
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export default (err: any, req: Request, res: Response, next: NextFunction) => {
-	// console.log(err.stack);
-
 	err.statusCode = err.statusCode || 500;
 	err.status = err.status || "error";
 

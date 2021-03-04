@@ -13,6 +13,11 @@ const signToken = (id: string) => {
 	});
 };
 
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ */
 export const signup = catchAsync(async (req: Request, res: Response) => {
 	const { error, value } = signupSchema.validate({
 		name: req.body.name,
@@ -36,6 +41,12 @@ export const signup = catchAsync(async (req: Request, res: Response) => {
 	});
 });
 
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export const login = catchAsync(
 	async (req: Request, res: Response, next: NextFunction) => {
 		const { email, password } = req.body;
@@ -70,6 +81,11 @@ export const login = catchAsync(
 	}
 );
 
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ */
 export const logout = (req: Request, res: Response) => {
 	res.cookie("jwt", "loggedout", {
 		expires: new Date(Date.now() + 10 * 1000),
@@ -78,6 +94,12 @@ export const logout = (req: Request, res: Response) => {
 	res.status(200).json({ status: "success" });
 };
 
+/**
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export const protect = catchAsync(
 	async (req: Request, res: Response, next: NextFunction) => {
 		// 1) Getting token and check of it's there
